@@ -2,13 +2,21 @@ import React from "react"
 import PropTypes from "prop-types"
 
 
-const CartItem = ({ onRemoveClicked, children }) => {
+const CartItem = ({
+  quantity,
+  inventory,
+  onRemoveClicked,
+  onIncreaseClicked,
+  onDecreaseClicked,
+  children,
+}) => {
   return (
     <article>
 
       {children}
 
       <button
+        name="remove"
         onClick={onRemoveClicked}>
         Remove
       </button>
@@ -17,22 +25,22 @@ const CartItem = ({ onRemoveClicked, children }) => {
         name="minus"
         type="button"
         value="-"
-        disabled={false}
-        onClick=""
+        disabled={quantity === 1 ? 'disabled' : ''}
+        onClick={onDecreaseClicked}
       />
 
       <output
         name="quantity"
         htmlFor="minus plus">
-        0
+        {quantity}
       </output>
 
       <input
         name="plus"
         type="button"
         value="+"
-        disabled={false}
-        onClick=""
+        disabled={inventory === 0 ? 'disabled' : ''}
+        onClick={onIncreaseClicked}
       />
 
     </article>
@@ -40,8 +48,12 @@ const CartItem = ({ onRemoveClicked, children }) => {
 }
 
 CartItem.protoTypes = {
+  quantity: PropTypes.number,
+  inventory: PropTypes.number,
   onRemoveClicked: PropTypes.func,
-  children: PropTypes.node
+  onIncreasedClicked: PropTypes.func,
+  onDecreasedClicked: PropTypes.func,
+  children: PropTypes.node,
 }
 
 

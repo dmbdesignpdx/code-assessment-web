@@ -2,7 +2,9 @@ import {
   ADD_TO_CART,
   CHECKOUT_REQUEST,
   CHECKOUT_FAILURE,
-  REMOVE_FROM_CART
+  REMOVE_FROM_CART,
+  INCREASE_QUANTITY,
+  DECREASE_QUANTITY,
 } from '../constants/ActionTypes'
 
 
@@ -35,15 +37,23 @@ const quantityById = (state = initialState.quantityById, action) => {
   
   switch (action.type) {
     case ADD_TO_CART:
+    case INCREASE_QUANTITY:
       return {
         ...state,
         [productId]: (state[productId] || 0) + 1
       }
-    case REMOVE_FROM_CART:
+    case DECREASE_QUANTITY: {
+      return {
+        ...state,
+        [productId]: state[productId] - 1
+      }
+    }
+    case REMOVE_FROM_CART: {
       return {
         ...state,
         [productId]: 0
       }
+    }
     default:
       return state
   }

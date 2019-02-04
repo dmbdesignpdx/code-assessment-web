@@ -30,7 +30,8 @@ export const getTotal = state =>
 export const getCartProducts = state =>
   getAddedIds(state).map(id => ({
     ...getProduct(state, id),
-    quantity: getQuantity(state, id)
+    quantity: getQuantity(state, id),
+    inventory: getProduct(state, id).inventory,
   }))
 
 

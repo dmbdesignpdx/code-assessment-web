@@ -16,6 +16,20 @@ const addToCartUnsafe = productId => ({
 })
 
 
+// Action for increasing quantity in cart
+const increaseQuanityInCart = productId => ({
+  type: types.INCREASE_QUANTITY,
+  productId
+})
+
+
+// Action for decreasing quantity in cart
+const decreaseQuanityInCart = productId => ({
+  type: types.DECREASE_QUANTITY,
+  productId
+})
+
+
 // Retrieves products from API
 export const getAllProducts = () => dispatch => {
   shop.getProducts(products => {
@@ -36,12 +50,32 @@ export const addToCart = productId => (dispatch, getState) => {
 export const removeProduct = productId => (dispatch, getState) => {
   const { cart } = getState()
 
-  if (getState().cart.addedIds.includes(productId)) {
+  if (cart.addedIds.includes(productId)) {
     dispatch({
       type: types.REMOVE_FROM_CART,
       productId,
       quantity: cart.quantityById[productId]
     })
+  }
+}
+
+
+// Increases quantity of product in cart
+export const increaseProduct = productId => (dispatch, getState) => {
+  const { products } = getState()
+
+  if (products.byId[productId].inventory > 0) {
+    dispatch(increaseQuanityInCart(productId))
+  }
+}
+
+
+// Decreases quantity of product in cart
+export const decreaseProduct = productId => (dispatch, getState) => {
+  const { cart } = getState()
+
+  if (cart.quantityById[productId] > 0) {
+    dispatch(decreaseQuanityInCart(productId))
   }
 }
 

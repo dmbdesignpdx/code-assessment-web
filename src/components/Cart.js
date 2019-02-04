@@ -5,13 +5,24 @@ import Product from './Product'
 import CartItem from "./CartItem"
 
 
-const Cart  = ({ products, total, onCheckoutClicked, removeProduct }) => {
+const Cart  = ({
+  products,
+  total,
+  onCheckoutClicked,
+  removeProduct,
+  increaseProduct,
+  decreaseProduct,
+}) => {
   const hasProducts = products.length > 0
   const nodes = hasProducts ? (
     products.map(product =>
       <CartItem
         key={product.id}
-        onRemoveClicked={() => removeProduct(product.id)}>
+        quantity={product.quantity}
+        inventory={product.inventory}
+        onRemoveClicked={() => removeProduct(product.id)}
+        onIncreaseClicked={() => increaseProduct(product.id)}
+        onDecreaseClicked={() => decreaseProduct(product.id)}>
 
         <Product
           title={product.title}
@@ -47,7 +58,10 @@ const Cart  = ({ products, total, onCheckoutClicked, removeProduct }) => {
 Cart.propTypes = {
   products: PropTypes.array,
   total: PropTypes.string,
-  onCheckoutClicked: PropTypes.func
+  onCheckoutClicked: PropTypes.func,
+  removeProduct: PropTypes.func,
+  increaseProduct: PropTypes.func,
+  decreaseProduct: PropTypes.func,
 }
 
 
