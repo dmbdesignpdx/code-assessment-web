@@ -32,7 +32,7 @@ Please also update this README file: we'd love to see notes on your decision-mak
 - [x] <s>Semantic changes</s>
 - [x] <s>Build new Cart features</s>
 - [x] <s>Cart - Remove an item</s>
-- [ ] Cart - Update an item quantity
+- [x] <s>Cart - Update an item quantity</s>
 - [ ] Design - Breakpoints & Globals
 - [ ] Design - Patterns
 - [ ] Design - Components
@@ -62,3 +62,9 @@ With the buttons set up, I can now start on making them actually work. Looking a
 Created a new component `CartItem` to house the `Product` component and the action buttons for the item.
 
 Finished the "remove" feature for the cart. It successfully removes an item and returns the quantity in the cart back to the inventory. :sparkles: The next step is to add the decrease and increase quantity feature to the cart.
+
+Updating quantity (increase and decrease) feature finished. :sunglasses: I had a little UX debate in my head: when faced with decreasing the quantity, is the user allowed to decrease to zero (and the item removed automatically) or is the decrease button disabled when at `1`? I ultimately decided that if a zero quantity meant removing the item, it might be an unwanted action. A user could accidentally click the decrease button to where it accidentally removes it. Giving removing powers only to the remove button and disabling the decrease button at `1` should cut down on accidents. :punch:
+
+Right. Time to implement the design. :raised_hands:
+
+Going to start off with writing the global styles and setting up ze breakpoints. From there I'll work on the patterns (buttons, cards, etc.).
