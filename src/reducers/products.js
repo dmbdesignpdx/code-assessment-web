@@ -1,6 +1,9 @@
 import { combineReducers } from 'redux'
+
 import { RECEIVE_PRODUCTS, ADD_TO_CART } from '../constants/ActionTypes'
 
+
+// Decreases number of products in inventory
 const products = (state, action) => {
   switch (action.type) {
     case ADD_TO_CART:
@@ -13,6 +16,8 @@ const products = (state, action) => {
   }
 }
 
+
+// Object of product objects by ID
 const byId = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_PRODUCTS:
@@ -35,6 +40,8 @@ const byId = (state = {}, action) => {
   }
 }
 
+
+// Keeps track of visible products by ID
 const visibleIds = (state = [], action) => {
   switch (action.type) {
     case RECEIVE_PRODUCTS:
@@ -44,13 +51,18 @@ const visibleIds = (state = [], action) => {
   }
 }
 
+
+// Gets product object by ID (value)
+export const getProduct = (state, id) =>
+  state.byId[id]
+
+
+// Lists available products (value)
+export const getVisibleProducts = state =>
+  state.visibleIds.map(id => getProduct(state, id))
+
+
 export default combineReducers({
   byId,
   visibleIds
 })
-
-export const getProduct = (state, id) =>
-  state.byId[id]
-
-export const getVisibleProducts = state =>
-  state.visibleIds.map(id => getProduct(state, id))

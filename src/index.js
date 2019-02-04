@@ -18,7 +18,10 @@ const store = createStore(
   applyMiddleware(...middleware)
 )
 
+
+// API Fetch
 store.dispatch(getAllProducts())
+
 
 render(
   <Provider store={store}>

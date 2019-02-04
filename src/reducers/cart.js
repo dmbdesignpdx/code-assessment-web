@@ -4,11 +4,14 @@ import {
   CHECKOUT_FAILURE
 } from '../constants/ActionTypes'
 
+
 const initialState = {
   addedIds: [],
   quantityById: {}
 }
 
+
+// Captures the added product IDs
 const addedIds = (state = initialState.addedIds, action) => {
   switch (action.type) {
     case ADD_TO_CART:
@@ -21,6 +24,8 @@ const addedIds = (state = initialState.addedIds, action) => {
   }
 }
 
+
+// Sets the quantity of product by ID
 const quantityById = (state = initialState.quantityById, action) => {
   switch (action.type) {
     case ADD_TO_CART:
@@ -33,11 +38,17 @@ const quantityById = (state = initialState.quantityById, action) => {
   }
 }
 
+
+// Produces the quantity of the product (value)
 export const getQuantity = (state, productId) =>
   state.quantityById[productId] || 0
 
+
+// Lists the added IDs (value)
 export const getAddedIds = state => state.addedIds
 
+
+// Checkout
 const cart = (state = initialState, action) => {
   switch (action.type) {
     case CHECKOUT_REQUEST:
@@ -51,5 +62,6 @@ const cart = (state = initialState, action) => {
       }
   }
 }
+
 
 export default cart
