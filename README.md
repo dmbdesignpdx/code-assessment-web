@@ -30,7 +30,7 @@ Please also update this README file: we'd love to see notes on your decision-mak
 
 - [x] <s>Add intial comments</s>
 - [x] <s>Semantic changes</s>
-- [ ] Build new Cart features
+- [x] <s>Build new Cart features</s>
 - [ ] Cart - Remove an item
 - [ ] Cart - Update an item quantity
 - [ ] Design - Breakpoints & Globals
@@ -54,3 +54,5 @@ I'm a really big proponent of semantic markup, so I can swap out some `div`s and
 I'd like to tackle the cart features before implementing the desgin. To me, it makes sense to get things working first. Which means, I need to set up those buttons!
 
 Once the features and design have been completed, I'll swap out the mock API for the online product endpoint.
+
+With the buttons set up, I can now start on making them actually work. Looking at the design, the "Remove" button may have to belong to the `Product` component &mdash; there might be some layout challenges if it stays outside the container of the product... we shall see. 🤔
