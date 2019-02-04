@@ -5,11 +5,13 @@ import Product from './Product'
 import CartItem from "./CartItem"
 
 
-const Cart  = ({ products, total, onCheckoutClicked }) => {
+const Cart  = ({ products, total, onCheckoutClicked, removeProduct }) => {
   const hasProducts = products.length > 0
   const nodes = hasProducts ? (
     products.map(product =>
-      <CartItem key={product.id}>
+      <CartItem
+        key={product.id}
+        onRemoveClicked={() => removeProduct(product.id)}>
 
         <Product
           title={product.title}

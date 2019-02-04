@@ -2,14 +2,14 @@ import React from "react"
 import PropTypes from "prop-types"
 
 
-const CartItem = ({ children }) => {
+const CartItem = ({ onRemoveClicked, children }) => {
   return (
     <article>
 
       {children}
 
       <button
-        onClick="">
+        onClick={onRemoveClicked}>
         Remove
       </button>
 
@@ -40,6 +40,7 @@ const CartItem = ({ children }) => {
 }
 
 CartItem.protoTypes = {
+  onRemoveClicked: PropTypes.func,
   children: PropTypes.node
 }
 
