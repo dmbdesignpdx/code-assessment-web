@@ -16,6 +16,33 @@ const Cart  = ({ products, total, onCheckoutClicked }) => {
           quantity={product.quantity}
         />
 
+        <button
+          onClick="">
+          Remove
+        </button>
+
+        <input
+          name="minus"
+          type="button"
+          value="-"
+          disabled={false}
+          onClick=""
+        />
+
+        <output
+          name="quantity"
+          htmlFor="minus plus">
+          0
+        </output>
+
+        <input
+          name="plus"
+          type="button"
+          value="+"
+          disabled={false}
+          onClick=""
+        />
+
       </article>
     )
   ) : (
