@@ -31,7 +31,7 @@ Please also update this README file: we'd love to see notes on your decision-mak
 - [x] <s>Add intial comments</s>
 - [x] <s>Semantic changes</s>
 - [x] <s>Build new Cart features</s>
-- [ ] Cart - Remove an item
+- [x] <s>Cart - Remove an item</s>
 - [ ] Cart - Update an item quantity
 - [ ] Design - Breakpoints & Globals
 - [ ] Design - Patterns
@@ -56,3 +56,9 @@ I'd like to tackle the cart features before implementing the desgin. To me, it m
 Once the features and design have been completed, I'll swap out the mock API for the online product endpoint.
 
 With the buttons set up, I can now start on making them actually work. Looking at the design, the "Remove" button may have to belong to the `Product` component &mdash; there might be some layout challenges if it stays outside the container of the product... we shall see. 🤔
+
+#### 2/4/19
+
+Created a new component `CartItem` to house the `Product` component and the action buttons for the item.
+
+Finished the "remove" feature for the cart. It successfully removes an item and returns the quantity in the cart back to the inventory. :sparkles: The next step is to add the decrease and increase quantity feature to the cart.
