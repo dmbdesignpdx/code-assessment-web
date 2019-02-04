@@ -2,13 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import Product from './Product'
+import CartItem from "./CartItem"
 
 
 const Cart  = ({ products, total, onCheckoutClicked }) => {
   const hasProducts = products.length > 0
   const nodes = hasProducts ? (
     products.map(product =>
-      <article key={product.id}>
+      <CartItem key={product.id}>
 
         <Product
           title={product.title}
@@ -16,34 +17,7 @@ const Cart  = ({ products, total, onCheckoutClicked }) => {
           quantity={product.quantity}
         />
 
-        <button
-          onClick="">
-          Remove
-        </button>
-
-        <input
-          name="minus"
-          type="button"
-          value="-"
-          disabled={false}
-          onClick=""
-        />
-
-        <output
-          name="quantity"
-          htmlFor="minus plus">
-          0
-        </output>
-
-        <input
-          name="plus"
-          type="button"
-          value="+"
-          disabled={false}
-          onClick=""
-        />
-
-      </article>
+      </CartItem>
     )
   ) : (
     <em>Please add some products to cart.</em>
