@@ -29,7 +29,7 @@ Please also update this README file: we'd love to see notes on your decision-mak
 ### To Do
 
 - [x] <s>Add intial comments</s>
-- [ ] Semantic changes
+- [x] <s>Semantic changes</s>
 - [ ] Build new Cart features
 - [ ] Cart - Remove an item
 - [ ] Cart - Update an item quantity
@@ -50,3 +50,7 @@ Yay! No semicolons!! :thumbsup: :thumbsup:
 Writing comments helps me get acquainted and orient myself with an unknown project. Components are pretty self-explanatory, but I'll add some comments for the actions and reducers.
 
 I'm a really big proponent of semantic markup, so I can swap out some `div`s and remove some that are unnecessary &mdash; give a little meaning to these elements, but keep it pretty basic. I'll probably make a few more changes when I get to building out the layout based on the design.
+
+I'd like to tackle the cart features before implementing the desgin. To me, it makes sense to get things working first. Which means, I need to set up those buttons!
+
+Once the features and design have been completed, I'll swap out the mock API for the online product endpoint.
