@@ -29,10 +29,10 @@ html {
 }
 
 body {
-  -ms-text-size-adjust: none;
-  -moz-text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  text-size-adjust: none;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
   -ms-touch-action: manipulation;
   touch-action: manipulation;
   -webkit-overflow-scrolling: touch;
@@ -60,6 +60,12 @@ button {
   appearance: none
 }
 
+button,
+input[type=button] {
+  box-sizing: content-box;
+  -webkit-tap-highlight-color: transparent
+}
+
 h2,
 h3,
 h4,
@@ -70,7 +76,8 @@ input {
 
 img,
 svg {
-  display: block
+  display: block;
+  font-size: 0
 }
 
 .nobr {
@@ -79,9 +86,10 @@ svg {
 
 h2,
 h3,
-h4 {
+h4,
+.sub {
   text-rendering: geometricPrecision;
-  line-height: 1.1
+  line-height: 1
 }
 
 h2 {
@@ -93,6 +101,7 @@ h3 {
 }
 
 p {
+  letter-spacing: 0.01em;
   line-height: 1.43
 }
 
@@ -130,7 +139,8 @@ main {
 
 @media (min-width: 768px) {
 
-  button {
+  button,
+  input[type=button] {
     cursor: pointer;
   }
 

@@ -87,8 +87,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
-  padding: 0 22px;
+  padding: 0 22px 12px;
 }
 
 .card .sub,
@@ -101,4 +100,76 @@
   color: var(--gray);
   text-transform: uppercase;
   opacity: 0.9
+}
+
+
+
+@media (min-width: 414px) {
+
+  .card {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 40% 1fr;
+    grid-template-columns: 40% 1fr;
+    -ms-grid-rows: auto 1fr auto;
+    grid-template-rows: auto 1fr auto;
+    margin-bottom: 24px
+  }
+
+  .card .mask {
+    -ms-grid-row: 1;
+    -ms-grid-span: 3;
+    grid-row: 1 / 4;
+    margin-bottom: 0
+  }
+
+  .card hgroup,
+  .card .sub,
+  .card button {
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 1;
+    grid-column: 2 / 3
+  }
+
+  .card .sub,
+  .card button {
+    -ms-grid-row-align: start;
+    align-self: start;
+    -ms-grid-column-align: start;
+    justify-self: start
+  }
+
+  .card hgroup {
+    padding: 36px 36px 15px
+  }
+  
+  .card .sub {
+    margin-left: 36px
+  }
+
+  .card button {
+    margin: 0 0 36px 36px
+  }
+
+}
+
+
+@media (min-width: 770px) {
+
+  .card {
+    margin-bottom: 28px
+  }
+
+  .card hgroup {
+    padding: 56px 56px 26px
+  }
+  
+  .card .sub {
+    margin-left: 56px
+  }
+
+  .card button {
+    margin: 0 0 56px 56px
+  }
+
 }
