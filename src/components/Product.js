@@ -5,9 +5,12 @@ import PropTypes from 'prop-types'
 const Product = ({ price, inventory, title }) => (
   <div>
 
-    <div class="mask">
+    <div className="mask">
 
-      <img alt=""/>
+      <img
+        src={`/img/${title.toLowerCase()}.png`}
+        alt=""
+      />
 
     </div>
     
