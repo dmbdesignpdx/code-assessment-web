@@ -15,6 +15,7 @@ const CartContainer = ({
   increaseProduct,
   decreaseProduct,
 }) => (
+
   <Cart
     products={products}
     total={total}
@@ -23,6 +24,7 @@ const CartContainer = ({
     increaseProduct={increaseProduct}
     decreaseProduct={decreaseProduct}
   />
+
 )
 
 CartContainer.propTypes = {

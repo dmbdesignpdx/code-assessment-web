@@ -2,8 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 
-const Product = ({ price, inventory, title }) => (
-  <div>
+const Product = ({ price, title, inventory, children }) => (
+
+  <article className={inventory ? "card" : "tile"}>
 
     <div className="mask">
 
@@ -22,15 +23,19 @@ const Product = ({ price, inventory, title }) => (
 
     </hgroup>
 
-    <p className="sub">{inventory} Remaining</p>
+    {inventory && <p className="sub">{inventory} Remaining</p>}
 
-  </div>
+    {children}
+
+  </article>
+
 )
 
 Product.propTypes = {
   price: PropTypes.number,
+  title: PropTypes.string,
   inventory: PropTypes.number,
-  title: PropTypes.string
+  children: PropTypes.node
 }
 
 

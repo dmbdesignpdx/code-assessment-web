@@ -5,13 +5,11 @@ import Product from './Product'
 
 
 const ProductItem = ({ product, onAddToCartClicked }) => (
-  <article className="card">
 
-    <Product
-      title={product.title}
-      price={product.price}
-      inventory={product.inventory}
-    />
+  <Product
+    title={product.title}
+    price={product.price}
+    inventory={product.inventory}>
 
     <button
       className="btn primary"
@@ -20,7 +18,8 @@ const ProductItem = ({ product, onAddToCartClicked }) => (
       {product.inventory > 0 ? 'Add to cart' : 'Sold Out'}
     </button>
 
-  </article>
+  </Product>
+
 )
 
 ProductItem.propTypes = {

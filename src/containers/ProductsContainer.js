@@ -5,18 +5,22 @@ import { connect } from 'react-redux'
 import { addToCart } from '../actions'
 import { getVisibleProducts } from '../reducers/products'
 import ProductItem from '../components/ProductItem'
-import ProductsList from '../components/ProductsList'
 
 
 const ProductsContainer = ({ products, addToCart }) => (
-  <ProductsList>
+
+  <section>
     {products.map(product =>
+
       <ProductItem
         key={product.id}
         product={product}
-        onAddToCartClicked={() => addToCart(product.id)} />
+        onAddToCartClicked={() => addToCart(product.id)}
+      />
+
     )}
-  </ProductsList>
+  </section>
+
 )
 
 ProductsContainer.propTypes = {

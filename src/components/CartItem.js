@@ -1,55 +1,63 @@
 import React from "react"
 import PropTypes from "prop-types"
 
+import Product from "./Product"
+
 
 const CartItem = ({
-  quantity,
-  inventory,
+  product,
   onRemoveClicked,
   onIncreaseClicked,
   onDecreaseClicked,
-  children,
-}) => {
-  return (
-    <article>
+}) => (
 
-      {children}
-
+    <Product
+      title={product.title}
+      price={product.price}>
+    
       <button
         name="remove"
         onClick={onRemoveClicked}>
         Remove
       </button>
 
-      <input
-        name="minus"
-        type="button"
-        value="-"
-        disabled={quantity === 1 ? 'disabled' : ''}
-        onClick={onDecreaseClicked}
-      />
+      <div>
 
-      <output
-        name="quantity"
-        htmlFor="minus plus">
-        {quantity}
-      </output>
+        <input
+          name="minus"
+          type="button"
+          value="-"
+          disabled={product.quantity === 1 ? 'disabled' : ''}
+          onClick={onDecreaseClicked}
+        />
 
-      <input
-        name="plus"
-        type="button"
-        value="+"
-        disabled={inventory === 0 ? 'disabled' : ''}
-        onClick={onIncreaseClicked}
-      />
+        <output
+          name="quantity"
+          htmlFor="minus plus">
+          {product.quantity}
+        </output>
 
-    </article>
-  )
-}
+        <input
+          name="plus"
+          type="button"
+          value="+"
+          disabled={product.inventory === 0 ? 'disabled' : ''}
+          onClick={onIncreaseClicked}
+        />
+
+      </div>
+    
+    </Product>
+
+)
 
 CartItem.protoTypes = {
-  quantity: PropTypes.number,
-  inventory: PropTypes.number,
+  product: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    quantity: PropTypes.number.isRequired,
+    inventory: PropTypes.number,
+  }).isRequired,
   onRemoveClicked: PropTypes.func,
   onIncreasedClicked: PropTypes.func,
   onDecreasedClicked: PropTypes.func,
