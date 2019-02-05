@@ -1,7 +1,11 @@
 import React from "react"
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+
+import { getCartProducts } from '../reducers'
 
 
-const ShopHeader = () => {
+const ShopHeader = ({ products }) => {
   return (
     <header>
 
@@ -9,12 +13,21 @@ const ShopHeader = () => {
 
       <button
         className="text-link">
-        Your cart is empty
+        {products.length > 0 ? "View your cart" : "Your cart is empty"}
       </button>
 
     </header>
   )
 }
 
+ShopHeader.propTypes = {
+  products: PropTypes.array.isRequired,
+}
 
-export default ShopHeader
+
+const mapStateToProps = (state) => ({
+  products: getCartProducts(state),
+})
+
+
+export default connect(mapStateToProps)(ShopHeader)
