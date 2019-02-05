@@ -3,6 +3,8 @@
 /* Buttons */
 
 .text-link {
+  display: flex;
+  align-items: center;
   font-size: 14px;
   color: var(--nearblack);
   background: none
@@ -10,6 +12,17 @@
 
 .text-link:hover {
   color: var(--hoverblue);
+}
+
+.text-link svg {
+  width: 18px;
+  height: 18px;
+  margin: 0 6px 1px 0;
+  fill: var(--nearblack);
+}
+
+.text-link:hover svg {
+  fill: var(--hoverblue);
 }
 
 .btn {

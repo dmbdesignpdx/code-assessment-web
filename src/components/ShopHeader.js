@@ -11,9 +11,12 @@ const ShopHeader = ({ products }) => {
 
       <h2>Acme Store</h2>
 
-      <button
-        className="text-link">
+      <button className="text-link">
+
+        <svg><use xlinkHref="#cart"/></svg>
+
         {products.length > 0 ? "View your cart" : "Your cart is empty"}
+
       </button>
 
     </header>

@@ -9,3 +9,14 @@ header {
 header h2 {
   margin-bottom: 12px
 }
+
+
+@media (min-width: 414px) {
+  
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+}
