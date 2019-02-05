@@ -2,12 +2,15 @@ import React from 'react'
 
 import ProductsContainer from './ProductsContainer'
 import CartContainer from './CartContainer'
+import ShopHeader from "../components/ShopHeader"
 
 
 const App = () => (
   <main>
 
-    <h2>Shopping Cart Example</h2>
+    <ShopHeader />
+
+    <hr/>
 
     <ProductsContainer />
 
