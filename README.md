@@ -73,3 +73,8 @@ I'll continue to tweak global styles and patterns while I work on component styl
 
 Looks like I'll have to place the Acme Store header in its own private component.
 
+#### 2/5/19
+
+:boom: Shake up! :boom: I've thought a lot about the action buttons for the cart and realized that there can be an easier way to implement the `Product` as it relates to the buttons. It's a bit of restructuring involving that `Product` takes in a child node that would be provided by the `ProductItem` or `CartItem`; the nodes would be the corresponding action buttons, thus maintaining the image, title, price, and action structure for both product list and cart.
+
+In terms of layout for the `Product`, the best solution would be css grid. I usually would implement a progressive enhancement approach to styling with css grid, but in this case, a solution can be reached by the use of basic css grid (which IE and older Edge fully support with `-ms-`).
