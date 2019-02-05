@@ -33,8 +33,8 @@ Please also update this README file: we'd love to see notes on your decision-mak
 - [x] <s>Build new Cart features</s>
 - [x] <s>Cart - Remove an item</s>
 - [x] <s>Cart - Update an item quantity</s>
-- [ ] Design - Breakpoints & Globals
-- [ ] Design - Patterns
+- [x] <s>Design - Breakpoints & Globals</s>
+- [x] <s>Design - Patterns</s>
 - [ ] Design - Components
 - [ ] Design - Layout
 - [ ] Design - Cart
@@ -68,4 +68,8 @@ Updating quantity (increase and decrease) feature finished. :sunglasses: I had a
 Right. Time to implement the design. :raised_hands:
 
 Going to start off with writing the global styles and setting up ze breakpoints. I'll use a bit of my own css boilerplate for resets and normalizing. From there I'll work on the patterns (buttons, cards, etc.).
+
+I'll continue to tweak global styles and patterns while I work on component styles. Next up: product component styles and setup. I'll add class names and any html elements needed to aid in styling. Will also add the :watch: images. It'll be looking slick in no time.
+
+Looks like I'll have to place the Acme Store header in its own private component.
 
