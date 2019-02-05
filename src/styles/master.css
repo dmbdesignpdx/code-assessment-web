@@ -1,0 +1,127 @@
+/* Colors */
+
+:root {
+  --blue: #5E97D1;
+  --hoverblue: #407FC0;
+  --red: #CC1D39;
+  --lightgray: #F2F4F7;
+  --gray: #939393;
+  --offwhite: #F5F5F5;
+  --nearblack: #292929;
+}
+
+
+/* Global Styling, Resets, and Normalizations */
+
+@-ms-viewport {
+  width: device-width
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box
+}
+
+html {
+  font: normal 16px Arial,
+  sans-serif;
+  background: var(--lightgray)
+}
+
+body {
+  -ms-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  -webkit-overflow-scrolling: touch;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased
+}
+
+body,
+h2,
+h3,
+h4,
+p,
+hr,
+button,
+input {
+  padding: 0;
+  margin: 0;
+  border: 0
+}
+
+input,
+button {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none
+}
+
+h2,
+h3,
+button,
+input {
+  font: inherit
+}
+
+img,
+svg {
+  display: block
+}
+
+.nobr {
+  white-space: nowrap
+}
+
+h2,
+h3,
+h4 {
+  text-rendering: geometricPrecision;
+  line-height: 1.1
+}
+
+h2 {
+  font-size: 1.8rem
+}
+
+h3 {
+  font-size: 1.3rem
+}
+
+p {
+  line-height: 1.43
+}
+
+.product p {
+  font-size: 0.75rem
+}
+
+
+
+
+/* Breakpoints */
+
+@media (min-width: 320px) {
+
+  html {
+    font-size: 21px
+  }
+
+}
+
+
+@media (min-width: 768px) {
+
+  h2 {
+    font-size: 2.4rem
+  }
+
+  h3 {
+    font-size: 1.8rem
+  }
+
+}
