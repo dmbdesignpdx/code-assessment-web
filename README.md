@@ -67,4 +67,5 @@ Updating quantity (increase and decrease) feature finished. :sunglasses: I had a
 
 Right. Time to implement the design. :raised_hands:
 
-Going to start off with writing the global styles and setting up ze breakpoints. From there I'll work on the patterns (buttons, cards, etc.).
+Going to start off with writing the global styles and setting up ze breakpoints. I'll use a bit of my own css boilerplate for resets and normalizing. From there I'll work on the patterns (buttons, cards, etc.).
+
