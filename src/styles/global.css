@@ -103,7 +103,15 @@ p {
 hr {
   height: 1px;
   background: var(--gray);
-  opacity: 0.6
+  opacity: 0.6;
+  margin-bottom: 17px
+}
+
+main {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 17px
 }
 
 

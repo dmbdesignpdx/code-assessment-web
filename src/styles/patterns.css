@@ -5,6 +5,7 @@
 .text-link {
   font-size: 14px;
   color: var(--nearblack);
+  background: none
 }
 
 .text-link:hover {
@@ -54,6 +55,8 @@
 /* Cards */
 
 .card {
+  position: relative;
   border-radius: 8px;
-  background: #FFF
+  background: #FFF;
+  margin-bottom: 10px
 }

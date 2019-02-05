@@ -9,7 +9,7 @@ import ProductsList from '../components/ProductsList'
 
 
 const ProductsContainer = ({ products, addToCart }) => (
-  <ProductsList title="Products">
+  <ProductsList>
     {products.map(product =>
       <ProductItem
         key={product.id}

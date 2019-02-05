@@ -4,12 +4,22 @@ import PropTypes from 'prop-types'
 
 const Product = ({ price, inventory, title }) => (
   <div>
+
+    <div class="mask">
+
+      <img alt=""/>
+
+    </div>
     
-    <h4>{title}</h4>
+    <hgroup>
 
-    <h5>&#36;{price}</h5>
+      <h3>{title}</h3>
 
-    <p>{inventory} Remaining</p>
+      <h4>&#36;{price}</h4>
+
+    </hgroup>
+
+    <p className="sub">{inventory} Remaining</p>
 
   </div>
 )
