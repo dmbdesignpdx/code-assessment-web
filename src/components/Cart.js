@@ -7,6 +7,8 @@ import CartItem from "./CartItem"
 const Cart = ({
   products,
   total,
+  showing,
+  onCloseClicked,
   onCheckoutClicked,
   removeProduct,
   increaseProduct,
@@ -58,15 +60,21 @@ const Cart = ({
 
   return (
 
-    <div id="cart-modal">
+    <div
+      id="cart-modal"
+      className={showing ? "show" : ""}>
 
-      <dialog>
+      <dialog {...showing && {open: true}}>
         
         <h3>Your Cart</h3>
 
         <hr/>
         
-        <button id="close"><svg viewBox="0 0 10 10"><path d="M2,2 8,8"/><path d="M8,2 2,8"/></svg></button>
+        <button
+          id="close"
+          onClick={onCloseClicked}>
+          <svg viewBox="0 0 10 10"><path d="M2,2 8,8"/><path d="M8,2 2,8"/></svg>
+        </button>
         
         {nodes}
       
@@ -80,7 +88,9 @@ const Cart = ({
 Cart.propTypes = {
   products: PropTypes.array,
   total: PropTypes.string,
+  showing: PropTypes.bool,
   onCheckoutClicked: PropTypes.func,
+  onCloseClicked: PropTypes.func,
   removeProduct: PropTypes.func,
   increaseProduct: PropTypes.func,
   decreaseProduct: PropTypes.func,

@@ -2,10 +2,11 @@ import React from "react"
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
+import { showCart } from "../actions"
 import { getCartProducts } from '../reducers'
 
 
-const ShopHeader = ({ products }) => {
+const ShopHeader = ({ products, showCart }) => {
   return (
     <header>
 
@@ -13,7 +14,8 @@ const ShopHeader = ({ products }) => {
 
       <button
         id="view"
-        className="text-link">
+        className="text-link"
+        onClick={showCart}>
 
         <svg><use xlinkHref="#cart"/></svg>
 
@@ -27,12 +29,13 @@ const ShopHeader = ({ products }) => {
 
 ShopHeader.propTypes = {
   products: PropTypes.array.isRequired,
+  showCart: PropTypes.func.isRequired,
 }
 
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   products: getCartProducts(state),
 })
 
 
-export default connect(mapStateToProps)(ShopHeader)
+export default connect(mapStateToProps, { showCart })(ShopHeader)

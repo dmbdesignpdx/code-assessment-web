@@ -9,6 +9,10 @@
   background: rgba(0,0,0,0.75)
 }
 
+#cart-modal.show {
+  display: flex
+}
+
 #close {
   width: 22px;
   height: 22px;

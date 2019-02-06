@@ -5,13 +5,16 @@ import {
   REMOVE_FROM_CART,
   INCREASE_QUANTITY,
   DECREASE_QUANTITY,
+  SHOW_CART,
+  HIDE_CART,
 } from '../constants/ActionTypes'
 
 
 // Initial State of Cart
 const initialState = {
   addedIds: [],
-  quantityById: {}
+  quantityById: {},
+  showing: false
 }
 
 
@@ -60,6 +63,22 @@ const quantityById = (state = initialState.quantityById, action) => {
 }
 
 
+// Manage Cart visibility
+export const manageModal = (state = initialState.showing, action) => {
+  switch (action.type) {
+    case SHOW_CART: {
+      return true
+    }
+    case HIDE_CART: {
+      return false
+    }
+    default: {
+      return state
+    }
+  }
+}
+
+
 // Produces the quantity of the product (value)
 export const getQuantity = (state, productId) =>
   state.quantityById[productId] || 0
@@ -79,7 +98,8 @@ const cart = (state = initialState, action) => {
     default:
       return {
         addedIds: managedIds(state.addedIds, action),
-        quantityById: quantityById(state.quantityById, action)
+        quantityById: quantityById(state.quantityById, action),
+        showing: manageModal(state.showing, action)
       }
   }
 }

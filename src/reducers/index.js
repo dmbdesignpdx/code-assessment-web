@@ -35,6 +35,10 @@ export const getCartProducts = state =>
   }))
 
 
+// Grabs state of the modal
+export const modalState = state => state.cart.showing
+
+
 export default combineReducers({
   cart,
   products

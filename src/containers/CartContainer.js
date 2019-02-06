@@ -2,15 +2,23 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import { checkout, removeProduct, increaseProduct, decreaseProduct } from '../actions'
-import { getTotal, getCartProducts } from '../reducers'
+import {
+  checkout,
+  hideCart,
+  removeProduct,
+  increaseProduct,
+  decreaseProduct,
+} from '../actions'
+import { getTotal, getCartProducts, modalState } from '../reducers'
 import Cart from '../components/Cart'
 
 
 const CartContainer = ({ 
   products,
+  showing,
   total,
   checkout,
+  hideCart,
   removeProduct,
   increaseProduct,
   decreaseProduct,
@@ -19,7 +27,9 @@ const CartContainer = ({
   <Cart
     products={products}
     total={total}
+    showing={showing}
     onCheckoutClicked={() => checkout(products)}
+    onCloseClicked={() => hideCart()}
     removeProduct={removeProduct}
     increaseProduct={increaseProduct}
     decreaseProduct={decreaseProduct}
@@ -38,6 +48,8 @@ CartContainer.propTypes = {
     quantity: PropTypes.number.isRequired
   })).isRequired,
   total: PropTypes.string,
+  showing: PropTypes.bool,
+  hideCart: PropTypes.func.isRequired,
   checkout: PropTypes.func.isRequired,
   removeProduct: PropTypes.func.isRequired,
   increaseProduct: PropTypes.func.isRequired,
@@ -45,17 +57,21 @@ CartContainer.propTypes = {
 }
 
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   products: getCartProducts(state),
-  total: getTotal(state)
+  total: getTotal(state),
+  showing: modalState(state)
 })
 
 
 export default connect(
   mapStateToProps,
-  { checkout,
+  {
+    checkout,
+    hideCart,
     removeProduct,
     increaseProduct,
     decreaseProduct,
+    modalState,
   }
 )(CartContainer)

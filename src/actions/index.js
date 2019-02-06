@@ -30,6 +30,22 @@ const decreaseQuanityInCart = productId => ({
 })
 
 
+// Action for showing cart
+export const showCart = () => dispatch => {
+  dispatch({
+    type: types.SHOW_CART
+  })
+}
+
+
+// Action for hiding cart
+export const hideCart = () => dispatch => {
+  dispatch({
+    type: types.HIDE_CART
+  })
+}
+
+
 // Retrieves products from API
 export const getAllProducts = () => dispatch => {
   fetch("http://tech.work.co/shopping-cart/products.json")
