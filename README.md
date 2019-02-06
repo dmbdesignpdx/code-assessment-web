@@ -35,9 +35,9 @@ Please also update this README file: we'd love to see notes on your decision-mak
 - [x] <s>Cart - Update an item quantity</s>
 - [x] <s>Design - Breakpoints & Globals</s>
 - [x] <s>Design - Patterns</s>
-- [ ] Design - Components
-- [ ] Design - Layout
-- [ ] Design - Cart
+- [x] <s>Design - Components</s>
+- [x] <s>Design - Layout</s>
+- [x] <s>Design - Cart</s>
 - [ ] Use product API
 - [ ] Accessibility
 
@@ -78,3 +78,7 @@ Looks like I'll have to place the Acme Store header in its own private component
 :boom: Shake up! :boom: I've thought a lot about the action buttons for the cart and realized that there can be an easier way to implement the `Product` as it relates to the buttons. It's a bit of restructuring involving that `Product` takes in a child node that would be provided by the `ProductItem` or `CartItem`; the nodes would be the corresponding action buttons, thus maintaining the image, title, price, and action structure for both product list and cart.
 
 In terms of layout for the `Product`, the best solution would be css grid. I usually would implement a progressive enhancement approach to styling with css grid, but in this case, a solution can be reached by the use of basic css grid (which IE and older Edge fully support with `-ms-`).
+
+I usually like to use inline svgs for icons; they are better to interact with than an icon font. And I absolute :heart: svgs.
+
+It is time... The time has come to style the cart. And to get this modal working properly, not just in showing and hiding but working by html/aria specs.
