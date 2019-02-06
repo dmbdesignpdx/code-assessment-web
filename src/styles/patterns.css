@@ -3,8 +3,9 @@
  *
  *  - Buttons
  *      Text Buttons
- *      Standar Buttons
+ *      Standard Buttons
  *      Checkout Button
+ *      Close Button
  *  - Cards
  *  - Tiles
  *  - Breakpoints
@@ -16,7 +17,9 @@
 /* Text Buttons */
 
 .text-link {
+  display: -webkit-flex;
   display: flex;
+  -webkit-align-items: center;
   align-items: center;
   font-size: 14px;
   color: var(--nearblack);
@@ -59,7 +62,7 @@
 }
 
 .btn.secondary {
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: var(--gray);
   background: var(--offwhite);
 }
@@ -98,20 +101,37 @@
   background: var(--blue);
 }
 
+/* Close Button */
+
+.close {
+  width: 32px;
+  height: 32px;
+  padding: 18px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  stroke: var(--gray);
+  stroke-width: 0.6;
+  stroke-linecap: round;
+  fill: none;
+  background: none;
+  opacity: 0.6
+}
+
 
 /* -- Cards -- */
 
 .card {
   position: relative;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   border-radius: 8px;
   background: #FFF;
-  overflow: hidden;
+  overflow: hidden
 }
 
 .mask {
   position: relative;
-  overflow: hidden;
+  overflow: hidden
 }
 
 .mask::before {
@@ -125,7 +145,7 @@
   height: 100%;
   position: absolute;
   top: 0;
-  left: -2%;
+  left: -2%
 }
 
 .card .mask {
@@ -134,8 +154,11 @@
 }
 
 .card hgroup {
+  display: -webkit-flex;
   display: flex;
+  -webkit-justify-content: space-between;
   justify-content: space-between;
+  -webkit-align-items: center;
   align-items: center;
   padding: 0 22px 12px;
 }
@@ -147,7 +170,6 @@
 }
 
 .card .sub {
-  color: var(--gray);
   text-transform: uppercase;
   opacity: 0.9
 }
@@ -156,24 +178,39 @@
 /* -- Tiles -- */
 
 .tile {
+  display: -ms-grid;
   display: grid;
+  -ms-grid-columns: 37% 1fr;
   grid-template-columns: 37% 1fr;
+  -ms-grid-rows: auto auto auto;
   grid-template-rows: auto auto auto
 }
 
 .tile .mask {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
   grid-row: 1 / 3;
-  grid-column: 1 / 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1 / 2
 }
 
 .tile button {
+  -ms-grid-row-align: end;
+  -webkit-align-self: end;
   align-self: end;
+  -ms-grid-column-align: start;
+  -webkit-justify-self: start;
   justify-self: start
 }
 
 .tile > div {
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 1;
   grid-row: 3 / 4;
-  grid-column: 1 / 3;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-column: 1 / 3
 }
 
 .tile hgroup {
@@ -196,7 +233,15 @@
   .btn.checkout {
     width: 100%;
     position: relative;
-    border-radius: 6px;
+    border-radius: 6px
+  }
+
+  .close {
+    width: 42px;
+    height: 42px;
+    padding: 8px;
+    top: 10px;
+    right: 10px
   }
 
   .card {
@@ -211,9 +256,13 @@
 
   .card .mask {
     -ms-grid-row: 1;
-    -ms-grid-span: 3;
+    -ms-grid-row-span: 3;
     grid-row: 1 / 4;
     margin-bottom: 0
+  }
+
+  .mask img {
+    left: -6%
   }
 
   .card hgroup,
@@ -244,7 +293,6 @@
     margin: 0 0 36px 36px
   }
 
-
   .tile .mask {
     grid-row: 1 / 4
   }
@@ -272,6 +320,10 @@
 
   .card button {
     margin: 0 0 56px 56px
+  }
+
+  .mask img {
+    left: -4%
   }
 
 }

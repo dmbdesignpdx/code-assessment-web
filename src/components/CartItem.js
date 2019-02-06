@@ -33,7 +33,7 @@ const CartItem = ({
           id="minus"
           className="btn secondary left"
           type="button"
-          value="-"
+          value="&ndash;"
           aria-label={`Add another ${product.productTitle} to your cart`}
           disabled={product.quantity === 1 ? 'disabled' : ''}
           onClick={onDecreaseClicked}

@@ -1,17 +1,26 @@
-/* Colors */
+/*
+ *  Contents
+ *  
+ *  - Colors
+ *  - Global Styling, Resets, and Normalizations
+ *  - Breakpoints
+ */
+
+
+/* -- Colors -- */
 
 :root {
   --blue: #5E97D1;
   --hoverblue: #407FC0;
   --red: #CC1D39;
-  --lightgray: #F1F3F6;
+  --lightgray: #F0F2F5;
   --gray: #8E939C;
-  --offwhite: #F3F3F3;
+  --offwhite: #F2F2F2;
   --nearblack: #292929;
 }
 
 
-/* Global Styling, Resets, and Normalizations */
+/* -- Global Styling, Resets, and Normalizations -- */
 
 @-ms-viewport {
   width: device-width
@@ -54,17 +63,13 @@ dialog {
   border: 0
 }
 
-input,
-button {
+button,
+input {
+  box-sizing: content-box;
+  -webkit-tap-highlight-color: transparent;
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none
-}
-
-button,
-input[type=button] {
-  box-sizing: content-box;
-  -webkit-tap-highlight-color: transparent
 }
 
 h2,
@@ -94,6 +99,11 @@ h4,
   line-height: 1
 }
 
+h2,
+h4 {
+  color: var(--nearblack);
+}
+
 h2 {
   font-size: 1.8rem
 }
@@ -107,10 +117,15 @@ p {
   line-height: 1.43
 }
 
+.sub {
+  color: var(--gray);
+  font-size: 0.8rem
+}
+
 hr {
   height: 1px;
   background: var(--gray);
-  opacity: 0.6;
+  opacity: 0.4;
   margin-bottom: 17px
 }
 
@@ -123,23 +138,26 @@ main {
 
 
 
+/* -- Breakpoints -- */
 
-/* Breakpoints */
-
-@media (min-width: 414px) {
+@media (min-width: 416px) {
 
   html {
     font-size: 21px
   }
 
+  hr {
+    margin-bottom: 24px
+  }
+
 }
 
 
-@media (min-width: 768px) {
+@media (min-width: 770px) {
 
   button,
   input[type=button] {
-    cursor: pointer;
+    cursor: pointer
   }
 
   h2 {
@@ -148,6 +166,10 @@ main {
 
   h3 {
     font-size: 1.8rem
+  }
+
+  hr {
+    margin-bottom: 28px
   }
 
 }

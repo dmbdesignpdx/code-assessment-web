@@ -25,7 +25,7 @@ const Cart = ({
   
     <div>
 
-      <svg id="empty"><use xlinkHref="#cart"/></svg>
+      <svg className="empty"><use xlinkHref="#cart"/></svg>
 
       <em>Please add some products<br/>to your cart.</em>
 
@@ -75,11 +75,10 @@ const Cart = ({
 
   return (
 
-    <div
-      id="cart-modal"
-      className={showing ? "show" : ""}>
+    <div className={"cart-background " + (showing ? "show" : "")}>
 
       <dialog
+        className="cart"
         aria-labelledby="cart-title"
         aria-modal={showing ? "true" : "false"}
         {...showing && {open: true}}>
@@ -91,7 +90,7 @@ const Cart = ({
         {nodes}
 
         <button
-          id="close"
+          className="close"
           type="button"
           aria-label="Close your cart"
           onClick={onCloseClicked}>

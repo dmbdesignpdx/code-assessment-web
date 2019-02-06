@@ -1,4 +1,18 @@
-#cart-modal {
+/*
+ *  Contents
+ *  
+ *  - Cart Background
+ *  - Empty Cart Icon
+ *  - Cart Styles
+ *      Main
+ *      Increase/Decrease Quantity
+ *  - Breakpoints
+ */
+
+
+/* -- Cart Background -- */
+
+.cart-background {
   display: none;
   width: 100vw;
   height: 100vh;
@@ -9,109 +23,129 @@
   background: rgba(0,0,0,0.75)
 }
 
-#cart-modal.show {
+.cart-background.show {
   display: flex
 }
 
-#close {
-  width: 22px;
-  height: 22px;
-  padding: 18px;
-  position: absolute;
-  top: 0;
-  right: 0;
-  stroke: var(--gray);
-  stroke-width: 1;
-  stroke-linecap: round;
-  fill: none;
-  background: none;
+
+/* -- Empty Cart Icon -- */
+
+.empty {
+  height: 90px;
+  width: 90px;
+  position: relative;
+  right: 2px;
+  margin: 42% auto 10px;
+  fill: var(--gray);
+  opacity: 0.6
 }
 
-dialog article {
+
+/* -- Cart Styles -- */
+
+/* Main */
+
+.cart {
+  width: 100%;
+  height: 100%;
+  padding: 0 17px;
+  overflow-y: scroll;
+  background: #FFF
+}
+
+.cart article {
   margin-bottom: 17px
 }
 
-dialog p {
+.cart p {
+  -webkit-display: flex;
   display: flex;
   margin-bottom: 17px;
   color: var(--gray);
 }
 
-dialog p span {
+.cart p span {
   margin-left: auto;
   color: var(--nearblack);
 }
 
-
-dialog {
-  width: 100%;
-  height: 100%;
-  padding: 0 17px;
-  overflow-y: scroll;
+.cart article h3 {
+  font-size: 1.1rem
 }
 
-dialog > h3 {
-  padding: 52px 0 24px
+.cart > h3 {
+  font-size: 1.8rem;
+  padding: 54px 0 24px
 }
 
-dialog hr {
+.cart hr {
   margin-bottom: 17px
 }
 
-dialog p:last-of-type {
+.cart p:last-of-type {
   padding-bottom: 60px
 }
 
+.cart em {
+  display: block;
+  text-align: center;
+  font-size: 1rem;
+  font-style: normal;
+  line-height: 1.4;
+  color: var(--gray);
+  opacity: 0.8
+}
+
+/* Increase/Decrease Quanity */
+
 .controls {
+  -webkit-display: flex;
   display: flex;
-  padding: 17px 0
+  padding-top: 17px
 }
 
 .controls > * {
   flex: 1
 }
 
+.controls input:first-of-type {
+  padding-bottom: 4px
+}
+
+.controls input:last-of-type {
+  padding-bottom: 1px
+}
+
 .controls output {
-  padding: 1em 0;
+  padding: 0.9em 0;
   border-top: 2px solid var(--offwhite);
   border-bottom: 2px solid var(--offwhite);
   text-align: center;
 }
 
-#empty {
-  height: 70px;
-  width: 70px;
-  margin: 42% auto 10px;
-  fill: var(--gray);
-  opacity: 0.6;
-  position: relative;
-  right: 2px;
-}
 
-dialog em {
-  display: block;
-  text-align: center;
-  margin: 0 auto;
-  font-size: 1rem;
-  font-style: normal;
-  color: var(--gray);
-  opacity: 0.8;
-  line-height: 1.4
-}
+/* -- Breakpoints -- */
 
+@media (min-width: 416px) {
 
-@media (min-width: 414px) {
-
-  dialog {
+  .cart {
     width: 80%;
-    height: 60%;
-    position: relative;
+    height: 70%;
     max-width: 780px;
     max-height: 678px;
-    border-radius: 14px;
     padding: 0 30px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-    margin: auto
+    position: relative;
+    margin: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3)
+  }
+
+  .cart > h3 {
+    padding-top: 66px
+  }
+
+  .empty {
+    margin-top: 24%
   }
 
   .controls {
@@ -122,11 +156,7 @@ dialog em {
     padding: 0.6em 0
   }
 
-  #empty {
-    margin-top: 24%
-  }
-
-  dialog .checkout {
+  .cart .checkout {
     margin-bottom: 30px
   }
 
@@ -135,11 +165,11 @@ dialog em {
 
 @media (min-width: 770px) {
 
-  dialog {
+  .cart {
     padding: 0 80px
   }
 
-  #empty {
+  .empty {
     margin-top: 16%
   }
 
