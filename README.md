@@ -38,7 +38,7 @@ Please also update this README file: we'd love to see notes on your decision-mak
 - [x] <s>Design - Components</s>
 - [x] <s>Design - Layout</s>
 - [x] <s>Design - Cart</s>
-- [ ] Use product API
+- [x] <s>Use product API</s>
 - [ ] Accessibility
 
 ### Notes
@@ -75,10 +75,16 @@ Looks like I'll have to place the Acme Store header in its own private component
 
 #### 2/5/19
 
-:boom: Shake up! :boom: I've thought a lot about the action buttons for the cart and realized that there can be an easier way to implement the `Product` as it relates to the buttons. It's a bit of restructuring involving that `Product` takes in a child node that would be provided by the `ProductItem` or `CartItem`; the nodes would be the corresponding action buttons, thus maintaining the image, title, price, and action structure for both product list and cart.
+Hold up! :hand: I've thought a lot about the action buttons for the cart and realized that there can be an easier way to implement the `Product` as it relates to the buttons. It's a bit of restructuring involving that `Product` takes in a child node that would be provided by the `ProductItem` or `CartItem`; the nodes would be the corresponding action buttons, thus maintaining the image, title, price, and action structure for both product list and cart.
 
 In terms of layout for the `Product`, the best solution would be css grid. I usually would implement a progressive enhancement approach to styling with css grid, but in this case, a solution can be reached by the use of basic css grid (which IE and older Edge fully support with `-ms-`).
 
-I usually like to use inline svgs for icons; they are better to interact with than an icon font. And I absolute :heart: svgs.
+I usually like to use inline svgs for icons, or an external collection of symbols. Those approaches, in my opinion, are much easier set up and offer more interesting ways to interact with than using an icon font. SVGs are the :bomb:.
 
-It is time... The time has come to style the cart. And to get this modal working properly, not just in showing and hiding but working by html/aria specs.
+It is time... The time has come to style-up the cart. And to get this modal working properly, not just showing and hiding but working by html/aria specs... well, as best it can... `dialog` has pretty good support as an element, just not for `::backdrop` (which will be fantastic when that's fully adopted), and `show()`, `showModal()`, etc. are still experimental and poorly supported.
+
+API hooked up. :electric_plug: ...and no :fire:!
+
+Replaced the temperary scripts for toggling the `open` attribute of the `dialog` with some state action. Added `showing` to the `cart` object of the state, and added the appropriate action types to handle that state. Much action types!
+
+Just need to sift through and add some accessibility, do a little bit of cleaning, double-check the design, and this puppy should be good to go. :dog2:
