@@ -39,6 +39,10 @@ export const getCartProducts = state =>
 export const modalState = state => state.cart.showing
 
 
+// Gets current type of currency
+export const getCurrency = state => state.products.currencyType
+
+
 export default combineReducers({
   cart,
   products

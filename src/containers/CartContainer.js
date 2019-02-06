@@ -9,7 +9,14 @@ import {
   increaseProduct,
   decreaseProduct,
 } from '../actions'
-import { getTotal, getCartProducts, modalState } from '../reducers'
+
+import {
+  getTotal,
+  getCartProducts,
+  modalState,
+  getCurrency,
+} from '../reducers'
+
 import Cart from '../components/Cart'
 
 
@@ -17,6 +24,7 @@ const CartContainer = ({
   products,
   showing,
   total,
+  currency,
   checkout,
   hideCart,
   removeProduct,
@@ -28,6 +36,7 @@ const CartContainer = ({
     products={products}
     total={total}
     showing={showing}
+    currency={currency}
     onCheckoutClicked={() => checkout(products)}
     onCloseClicked={() => hideCart()}
     removeProduct={removeProduct}
@@ -41,16 +50,16 @@ CartContainer.propTypes = {
   products: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     productTitle: PropTypes.string.isRequired,
-    price: PropTypes.objectOf(PropTypes.shape({
+    price: PropTypes.shape({
       value: PropTypes.number.isRequired,
-      currency: PropTypes.string.isRequired,
-    })).isRequired,
+    }).isRequired,
     quantity: PropTypes.number.isRequired
   })).isRequired,
-  total: PropTypes.string,
-  showing: PropTypes.bool,
-  hideCart: PropTypes.func.isRequired,
+  showing: PropTypes.bool.isRequired,
+  total: PropTypes.string.isRequired,
+  currency: PropTypes.string.isRequired,
   checkout: PropTypes.func.isRequired,
+  hideCart: PropTypes.func.isRequired,
   removeProduct: PropTypes.func.isRequired,
   increaseProduct: PropTypes.func.isRequired,
   decreaseProduct: PropTypes.func.isRequired,
@@ -60,7 +69,8 @@ CartContainer.propTypes = {
 const mapStateToProps = state => ({
   products: getCartProducts(state),
   total: getTotal(state),
-  showing: modalState(state)
+  showing: modalState(state),
+  currency: getCurrency(state),
 })
 
 

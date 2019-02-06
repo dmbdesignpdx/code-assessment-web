@@ -4,11 +4,12 @@ import PropTypes from 'prop-types'
 import Product from './Product'
 
 
-const ProductItem = ({ product, onAddToCartClicked }) => (
+const ProductItem = ({ product, currency, onAddToCartClicked }) => (
 
   <Product
     title={product.productTitle}
     price={product.price.value}
+    currency={currency}
     inventory={product.inventory}>
 
     <button
@@ -27,11 +28,11 @@ ProductItem.propTypes = {
     productTitle: PropTypes.string.isRequired,
     price: PropTypes.shape({
       value: PropTypes.number.isRequired,
-      currency: PropTypes.string.isRequired,
     }).isRequired,
-    inventory: PropTypes.number.isRequired
+    inventory: PropTypes.number.isRequired,
   }).isRequired,
-  onAddToCartClicked: PropTypes.func.isRequired
+  currency: PropTypes.string.isRequired,
+  onAddToCartClicked: PropTypes.func.isRequired,
 }
 
 

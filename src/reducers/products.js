@@ -71,6 +71,20 @@ const visibleIds = (state = [], action) => {
 }
 
 
+/**
+ *  Sets a currency type
+ * 
+ *  There would be some magic to take a user's preffered currency type
+ *  and convert the given product's ammount to the appropriate amount. 
+ *  We can't just use the API's currency value for the state, but we can 
+ *  default it to dollars. An action can be added in the future to 
+ *  change state.
+ */
+const currencyType = (state = "USD") => {
+  return state
+}
+
+
 // Gets product object by ID (value)
 export const getProduct = (state, id) =>
   state.byId[id]
@@ -83,5 +97,6 @@ export const getVisibleProducts = state =>
 
 export default combineReducers({
   byId,
-  visibleIds
+  visibleIds,
+  currencyType
 })

@@ -3,11 +3,12 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import { addToCart } from '../actions'
+import { getCurrency } from "../reducers"
 import { getVisibleProducts } from '../reducers/products'
 import ProductItem from '../components/ProductItem'
 
 
-const ProductsContainer = ({ products, addToCart }) => (
+const ProductsContainer = ({ products, currency, addToCart }) => (
 
   <section>
     {products.map(product =>
@@ -15,6 +16,7 @@ const ProductsContainer = ({ products, addToCart }) => (
       <ProductItem
         key={product.id}
         product={product}
+        currency={currency}
         onAddToCartClicked={() => addToCart(product.id)}
       />
 
@@ -29,16 +31,17 @@ ProductsContainer.propTypes = {
     productTitle: PropTypes.string.isRequired,
     price: PropTypes.shape({
       value: PropTypes.number.isRequired,
-      currency: PropTypes.string.isRequired,
     }).isRequired,
     inventory: PropTypes.number.isRequired
   })).isRequired,
-  addToCart: PropTypes.func.isRequired
+  currency: PropTypes.string.isRequired,
+  addToCart: PropTypes.func.isRequired,
 }
 
 
 const mapStateToProps = state => ({
-  products: getVisibleProducts(state.products)
+  products: getVisibleProducts(state.products),
+  currency: getCurrency(state),
 })
 
 

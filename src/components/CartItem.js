@@ -6,6 +6,7 @@ import Product from "./Product"
 
 const CartItem = ({
   product,
+  currency,
   onRemoveClicked,
   onIncreaseClicked,
   onDecreaseClicked,
@@ -13,7 +14,8 @@ const CartItem = ({
 
     <Product
       title={product.productTitle}
-      price={product.price.value}>
+      price={product.price.value}
+      currency={currency}>
     
       <button
         name="remove"
@@ -28,7 +30,7 @@ const CartItem = ({
           name="minus"
           className="btn secondary left"
           type="button"
-          value="&ndash;"
+          value="-"
           disabled={product.quantity === 1 ? 'disabled' : ''}
           onClick={onDecreaseClicked}
         />
@@ -59,15 +61,14 @@ CartItem.protoTypes = {
     productTitle: PropTypes.string.isRequired,
     price: PropTypes.shape({
       value: PropTypes.number.isRequired,
-      currency: PropTypes.string.isRequired,
     }).isRequired,
     quantity: PropTypes.number.isRequired,
     inventory: PropTypes.number,
   }).isRequired,
+  currency: PropTypes.string,
   onRemoveClicked: PropTypes.func,
   onIncreasedClicked: PropTypes.func,
   onDecreasedClicked: PropTypes.func,
-  children: PropTypes.node,
 }
 
 

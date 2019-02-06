@@ -1,8 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { toMoney } from "../funcs"
 
-const Product = ({ price, title, inventory, children }) => (
+
+const Product = ({
+  price,
+  title,
+  currency,
+  inventory,
+  children,
+}) => (
 
   <article className={inventory !== undefined ? "card" : "tile"}>
 
@@ -19,7 +27,7 @@ const Product = ({ price, title, inventory, children }) => (
 
       <h3>{title}</h3>
 
-      <h4>&#36;{price}</h4>
+      <h4>{toMoney(price, currency)}</h4>
 
     </hgroup>
 
@@ -34,8 +42,9 @@ const Product = ({ price, title, inventory, children }) => (
 Product.propTypes = {
   price: PropTypes.number,
   title: PropTypes.string,
+  currency: PropTypes.string,
   inventory: PropTypes.number,
-  children: PropTypes.node
+  children: PropTypes.node,
 }
 
 
