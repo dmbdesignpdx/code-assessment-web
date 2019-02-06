@@ -4,9 +4,9 @@
   --blue: #5E97D1;
   --hoverblue: #407FC0;
   --red: #CC1D39;
-  --lightgray: #F2F4F7;
+  --lightgray: #F1F3F6;
   --gray: #8E939C;
-  --offwhite: #F5F5F5;
+  --offwhite: #F3F3F3;
   --nearblack: #292929;
 }
 
@@ -47,7 +47,8 @@ h4,
 p,
 hr,
 button,
-input {
+input,
+dialog {
   padding: 0;
   margin: 0;
   border: 0

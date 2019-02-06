@@ -25,13 +25,19 @@
   fill: var(--hoverblue);
 }
 
+.text-remove {
+  color: var(--red);
+  background: none
+}
+
+
 .btn {
-  padding: 1em 1.5em;
   text-align: center;
   text-transform: uppercase
 }
 
 .btn.primary {
+  padding: 1em 1.5em;
   font-size: 0.8rem;
   color: #FFF;
   border-radius: 30px;
@@ -39,6 +45,7 @@
 }
 
 .btn.secondary {
+  font-size: 1.5rem;
   color: var(--gray);
   background: var(--offwhite);
 }
@@ -56,12 +63,23 @@
 }
 
 .btn.secondary:hover {
+  color: #FFF;
   background: var(--blue);
 }
 
 .btn:disabled, .text-link:disabled {
   opacity: 0.4;
   pointer-events: none
+}
+
+.btn.checkout {
+  width: 100%;
+  padding: 1em 0;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  color: #FFF;
+  background: var(--blue);
 }
 
 
@@ -75,25 +93,28 @@
   overflow: hidden;
 }
 
-.card .mask {
-  width: 100%;
+.mask {
   position: relative;
   overflow: hidden;
-  margin-bottom: 26px
 }
 
-.card .mask::before {
+.mask::before {
   display: block;
   content: "";
   padding-top: 72%
 }
 
-.card .mask img {
+.mask img {
   width: auto;
   height: 100%;
   position: absolute;
-  top:0;
+  top: 0;
   left: -2%;
+}
+
+.card .mask {
+  width: 100%;
+  margin-bottom: 26px
 }
 
 .card hgroup {
@@ -113,6 +134,42 @@
   color: var(--gray);
   text-transform: uppercase;
   opacity: 0.9
+}
+
+
+/* Tile */
+
+.tile {
+  display: grid;
+  grid-template-columns: 37% 1fr;
+  grid-template-rows: auto auto auto
+}
+
+.tile .mask {
+  grid-row: 1 / 3;
+  grid-column: 1 / 2;
+}
+
+.tile button {
+  align-self: end;
+  justify-self: start
+}
+
+.tile > div {
+  grid-row: 3 / 4;
+  grid-column: 1 / 3;
+}
+
+.tile hgroup {
+  padding-left: 14px
+}
+
+.tile h3 {
+  margin-bottom: 0.4em
+}
+
+.tile .text-remove {
+  margin-left: 14px
 }
 
 

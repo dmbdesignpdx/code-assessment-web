@@ -17,16 +17,18 @@ const CartItem = ({
     
       <button
         name="remove"
+        className="text-remove"
         onClick={onRemoveClicked}>
         Remove
       </button>
 
-      <div>
+      <div className="controls">
 
         <input
           name="minus"
+          className="btn secondary left"
           type="button"
-          value="-"
+          value="&ndash;"
           disabled={product.quantity === 1 ? 'disabled' : ''}
           onClick={onDecreaseClicked}
         />
@@ -39,6 +41,7 @@ const CartItem = ({
 
         <input
           name="plus"
+          className="btn secondary right"
           type="button"
           value="+"
           disabled={product.inventory === 0 ? 'disabled' : ''}

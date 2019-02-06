@@ -1,0 +1,66 @@
+#cart-modal {
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background: rgba(0,0,0,0.75)
+}
+
+#close {
+  width: 22px;
+  height: 22px;
+  padding: 18px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  stroke: var(--gray);
+  stroke-width: 1;
+  stroke-linecap: round;
+  fill: none;
+  background: none;
+}
+
+dialog p {
+  display: flex;
+  margin-bottom: 17px;
+  color: var(--gray);
+}
+
+dialog p span {
+  margin-left: auto;
+  color: var(--nearblack);
+}
+
+
+dialog {
+  width: 100%;
+  height: 100%;
+  padding: 17px;
+}
+
+dialog h2 {
+  padding: 52px 0 24px
+}
+
+dialog hr {
+  margin-bottom: 17px
+}
+
+.controls {
+  display: flex;
+  padding: 17px 0
+}
+
+.controls > * {
+  flex: 1
+}
+
+.controls output {
+  padding: 1em 0;
+  border-top: 2px solid var(--offwhite);
+  border-bottom: 2px solid var(--offwhite);
+  text-align: center;
+}
