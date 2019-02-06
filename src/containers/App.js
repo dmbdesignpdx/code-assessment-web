@@ -6,6 +6,7 @@ import ShopHeader from "../components/ShopHeader"
 
 
 const App = () => (
+
   <main>
 
     <ShopHeader />
@@ -17,6 +18,7 @@ const App = () => (
     <CartContainer />
 
   </main>
+
 )
 
 

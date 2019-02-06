@@ -8,6 +8,7 @@ import { getCartProducts } from '../reducers'
 
 const ShopHeader = ({ products, showCart }) => {
   return (
+
     <header>
 
       <h2>Acme Store</h2>
@@ -24,6 +25,7 @@ const ShopHeader = ({ products, showCart }) => {
       </button>
 
     </header>
+
   )
 }
 
