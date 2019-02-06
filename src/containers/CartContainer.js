@@ -30,8 +30,11 @@ const CartContainer = ({
 CartContainer.propTypes = {
   products: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
+    productTitle: PropTypes.string.isRequired,
+    price: PropTypes.objectOf(PropTypes.shape({
+      value: PropTypes.number.isRequired,
+      currency: PropTypes.string.isRequired,
+    })).isRequired,
     quantity: PropTypes.number.isRequired
   })).isRequired,
   total: PropTypes.string,

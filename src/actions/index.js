@@ -32,9 +32,11 @@ const decreaseQuanityInCart = productId => ({
 
 // Retrieves products from API
 export const getAllProducts = () => dispatch => {
-  shop.getProducts(products => {
-    dispatch(receiveProducts(products))
-  })
+  fetch("http://tech.work.co/shopping-cart/products.json")
+    .then(result => result.json())
+    .then(products => {
+      dispatch(receiveProducts(products))
+    })
 }
 
 

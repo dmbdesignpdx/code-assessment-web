@@ -12,8 +12,8 @@ const CartItem = ({
 }) => (
 
     <Product
-      title={product.title}
-      price={product.price}>
+      title={product.productTitle}
+      price={product.price.value}>
     
       <button
         name="remove"
@@ -56,8 +56,11 @@ const CartItem = ({
 
 CartItem.protoTypes = {
   product: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
+    productTitle: PropTypes.string.isRequired,
+    price: PropTypes.shape({
+      value: PropTypes.number.isRequired,
+      currency: PropTypes.string.isRequired,
+    }).isRequired,
     quantity: PropTypes.number.isRequired,
     inventory: PropTypes.number,
   }).isRequired,

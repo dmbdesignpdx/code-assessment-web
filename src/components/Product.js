@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 const Product = ({ price, title, inventory, children }) => (
 
-  <article className={inventory ? "card" : "tile"}>
+  <article className={inventory !== undefined ? "card" : "tile"}>
 
     <div className="mask">
 
@@ -23,7 +23,7 @@ const Product = ({ price, title, inventory, children }) => (
 
     </hgroup>
 
-    {inventory && <p className="sub">{inventory} Remaining</p>}
+    {inventory !== undefined && <p className="sub">{inventory} Remaining</p>}
 
     {children}
 
