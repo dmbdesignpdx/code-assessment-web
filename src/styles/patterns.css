@@ -1,6 +1,19 @@
-/** Patterns **/
+/**
+ *  Contents:
+ *
+ *  - Buttons
+ *      Text Buttons
+ *      Standar Buttons
+ *      Checkout Button
+ *  - Cards
+ *  - Tiles
+ *  - Breakpoints
+ */
 
-/* Buttons */
+
+/* -- Buttons -- */
+
+/* Text Buttons */
 
 .text-link {
   display: flex;
@@ -30,6 +43,7 @@
   background: none
 }
 
+/* Standard Buttons */
 
 .btn {
   text-align: center;
@@ -72,6 +86,8 @@
   pointer-events: none
 }
 
+/* Checkout Button */
+
 .btn.checkout {
   width: 100%;
   padding: 1em 0;
@@ -83,7 +99,7 @@
 }
 
 
-/* Cards */
+/* -- Cards -- */
 
 .card {
   position: relative;
@@ -137,7 +153,7 @@
 }
 
 
-/* Tile */
+/* -- Tiles -- */
 
 .tile {
   display: grid;
@@ -173,8 +189,15 @@
 }
 
 
+/* -- Breakpoints -- */
 
 @media (min-width: 414px) {
+
+  .btn.checkout {
+    width: 100%;
+    position: relative;
+    border-radius: 6px;
+  }
 
   .card {
     display: -ms-grid;
@@ -219,6 +242,15 @@
 
   .card button {
     margin: 0 0 36px 36px
+  }
+
+
+  .tile .mask {
+    grid-row: 1 / 4
+  }
+
+  .tile > div {
+    grid-column: 2 / 3
   }
 
 }

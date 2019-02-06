@@ -38,7 +38,7 @@ render(
 
 // Show
 function showCart() {
-  document.querySelector("#cart-modal").style.display = "block"
+  document.querySelector("#cart-modal").style.display = "flex"
   document.querySelector("#cart-modal dialog").setAttribute("open", "")
 
   document.querySelector("#view").removeEventListener("click", showCart)
