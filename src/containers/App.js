@@ -11,7 +11,7 @@ const App = () => (
 
     <ShopHeader />
 
-    <hr/>
+    <hr aria-hidden="true"/>
 
     <ProductsContainer />
 

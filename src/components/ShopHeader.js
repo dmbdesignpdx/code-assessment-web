@@ -9,9 +9,9 @@ import { getCartProducts } from '../reducers'
 const ShopHeader = ({ products, showCart }) => {
   return (
 
-    <header>
+    <header aria-labelledby="store-title">
 
-      <h2>Acme Store</h2>
+      <h2 id="store-title">Acme Store</h2>
 
       <button
         id="view"

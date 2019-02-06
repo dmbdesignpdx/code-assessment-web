@@ -10,7 +10,8 @@ import ProductItem from '../components/ProductItem'
 
 const ProductsContainer = ({ products, currency, addToCart }) => (
 
-  <section>
+  <section
+    aria-label={`Product List. Contains ${products.length} products.`}>
     {products.map(product =>
 
       <ProductItem

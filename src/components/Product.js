@@ -10,24 +10,28 @@ const Product = ({
   currency,
   inventory,
   children,
-}) => (
+}) => {
+  const cost = toMoney(price, currency)
 
-  <article className={inventory !== undefined ? "card" : "tile"}>
+  return (
+  <article
+    className={inventory !== undefined ? "card" : "tile"}
+    aria-labelledby="article-title">
 
     <div className="mask">
 
       <img
         src={`/img/${title.toLowerCase()}.png`}
-        alt=""
+        alt={`The ${title} watch.`}
       />
 
     </div>
     
     <hgroup>
 
-      <h3>{title}</h3>
+      <h3 id="article-title">{title}</h3>
 
-      <h4>{toMoney(price, currency)}</h4>
+      <h4 aria-label={`Price: ${cost}`}>{cost}</h4>
 
     </hgroup>
 
@@ -36,8 +40,8 @@ const Product = ({
     {children}
 
   </article>
-
-)
+  )
+}
 
 Product.propTypes = {
   price: PropTypes.number,

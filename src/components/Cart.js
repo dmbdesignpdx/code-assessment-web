@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { toMoney } from "../funcs"
 import CartItem from "./CartItem"
 
+
 const Cart = ({
   products,
   total,
@@ -19,6 +20,7 @@ const Cart = ({
   const taxes = (total * 0.087).toFixed(2)
   const superTotal = parseFloat(total) + parseFloat(taxes)
 
+  // Default Empty Cart
   let nodes = (
   
     <div>
@@ -32,6 +34,7 @@ const Cart = ({
     )
 
   if (hasProducts) {
+    // List Products in Cart
     nodes = (
 
       <div>
@@ -48,18 +51,19 @@ const Cart = ({
     
         )}
 
-        <hr/>
+        <hr aria-hidden="true"/>
 
         <p>Subtotal: <span>{toMoney(total, currency)}</span></p>
 
         <p>Taxes: <span>{toMoney(taxes, currency)}</span></p>
 
-        <hr/>
+        <hr aria-hidden="true"/>
         
         <p>Total: <span>{toMoney(superTotal, currency)}</span></p>
         
         <button
           className="btn checkout"
+          aria-label="proceed to checkout"
           onClick={onCheckoutClicked}
           disabled={hasProducts ? '' : 'disabled'}>
           Checkout
@@ -75,19 +79,24 @@ const Cart = ({
       id="cart-modal"
       className={showing ? "show" : ""}>
 
-      <dialog {...showing && {open: true}}>
+      <dialog
+        aria-labelledby="cart-title"
+        aria-modal={showing ? "true" : "false"}
+        {...showing && {open: true}}>
         
-        <h3>Your Cart</h3>
+        <h3 id="cart-title">Your Cart</h3>
 
-        <hr/>
+        <hr aria-hidden="true"/>
         
+        {nodes}
+
         <button
           id="close"
+          type="button"
+          aria-label="Close your cart"
           onClick={onCloseClicked}>
           <svg viewBox="0 0 10 10"><path d="M2,2 8,8"/><path d="M8,2 2,8"/></svg>
         </button>
-        
-        {nodes}
       
       </dialog>
 

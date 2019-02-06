@@ -19,7 +19,9 @@ const CartItem = ({
     
       <button
         name="remove"
+        type="button"
         className="text-remove"
+        aria-label={`Remove ${product.productTitle} completely from your cart`}
         onClick={onRemoveClicked}>
         Remove
       </button>
@@ -28,24 +30,29 @@ const CartItem = ({
 
         <input
           name="minus"
+          id="minus"
           className="btn secondary left"
           type="button"
           value="-"
+          aria-label={`Add another ${product.productTitle} to your cart`}
           disabled={product.quantity === 1 ? 'disabled' : ''}
           onClick={onDecreaseClicked}
         />
 
         <output
           name="quantity"
+          aria-label={`Currently ${product.quantity} in your cart`}
           htmlFor="minus plus">
           {product.quantity}
         </output>
 
         <input
           name="plus"
+          id="plus"
           className="btn secondary right"
           type="button"
           value="+"
+          aria-label={`Remove one ${product.productTitle} from your cart`}
           disabled={product.inventory === 0 ? 'disabled' : ''}
           onClick={onIncreaseClicked}
         />

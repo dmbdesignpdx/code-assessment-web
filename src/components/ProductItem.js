@@ -14,9 +14,10 @@ const ProductItem = ({ product, currency, onAddToCartClicked }) => (
 
     <button
       className="btn primary"
+      type="button"
       onClick={onAddToCartClicked}
       disabled={product.inventory > 0 ? '' : 'disabled'}>
-      {product.inventory > 0 ? 'Add to cart' : 'Sold Out'}
+      {product.inventory > 0 ? 'Add to cart' : 'Sold out'}
     </button>
 
   </Product>
