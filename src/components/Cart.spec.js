@@ -1,42 +1,72 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import Cart from './Cart'
-import Product from './Product'
 
-const setup = (total, products = []) => {
+import Cart from './Cart'
+import CartItem from './CartItem'
+
+
+const setup = (total, products = [], showing = false, currency = "USD") => {
   const actions = {
-    onCheckoutClicked: jest.fn()
+    onCheckoutClicked: jest.fn(),
+    onCloseClicked: jest.fn(),
+    removeProduct: jest.fn(),
+    increaseProduct: jest.fn(),
+    decreaseProduct: jest.fn(),
   }
 
   const component = shallow(
-    <Cart products={products} total={total} {...actions} />
+    <Cart
+      products={products}
+      total={total}
+      showing={showing}
+      currency={currency}
+      {...actions}
+    />
   )
 
   return {
-    component: component,
-    actions: actions,
-    button: component.find('button'),
-    products: component.find(Product),
+    component,
+    actions,
+    showing,
+    currency,
+    cartitems: component.find(CartItem),
     em: component.find('em'),
-    p: component.find('p')
+    total: component.find('#total'),
+    subtotal: component.find('#subtotal'),
+    taxes: component.find('#taxes'),
+    close: component.find('.close'),
+    checkout: component.find('.checkout'),
   }
 }
 
+
 describe('Cart component', () => {
-  it('should display total', () => {
-    const { p } = setup('76')
-    expect(p.text()).toMatch(/^Total: \$76/)
+
+  it("should not display initialy", () => {
+    const { showing } = setup()
+    
+    expect(showing).toEqual(false)
   })
 
-  it('should display add some products message', () => {
+  it("should be using dollars", () => {
+    const { currency } = setup()
+    
+    expect(currency).toEqual("USD")
+  })
+
+  it("should display 'add some products' message", () => {
     const { em } = setup()
-    expect(em.text()).toMatch(/^Please add some products to cart/)
+    
+    expect(em.text()).toMatch("Please add some products to your cart.")
   })
 
-  it('should disable button', () => {
-    const { button } = setup()
-    expect(button.prop('disabled')).toEqual('disabled')
+  it("should have a close button", () => {
+    const { close, actions } = setup()
+    
+    close.simulate("click")
+    expect(actions.onCloseClicked).toBeCalled()
   })
+
 
   describe('when given product', () => {
     const product = [
@@ -49,24 +79,46 @@ describe('Cart component', () => {
     ]
 
     it('should render products', () => {
-      const { products } = setup('9.99', product)
+      const { cartitems, currency } = setup('9.99', product)
       const props = {
-        title: product[0].title,
-        price: product[0].price,
-        quantity: product[0].quantity
+        currency: currency,
+        product: {
+          id: product[0].id,
+          title: product[0].title,
+          price: product[0].price,
+          quantity: product[0].quantity
+        },
+        onRemoveClicked: cartitems.at(0).props().onRemoveClicked,
+        onIncreaseClicked: cartitems.at(0).props().onIncreaseClicked,
+        onDecreaseClicked: cartitems.at(0).props().onDecreaseClicked,
       }
 
-      expect(products.at(0).props()).toEqual(props)
+      expect(cartitems.at(0).props()).toEqual(props)
     })
 
-    it('should not disable button', () => {
-      const { button } = setup('9.99', product)
-      expect(button.prop('disabled')).toEqual('')
+    it("should show subtotal", () => {
+      const { subtotal } = setup("9.99", product)
+      
+      expect(subtotal.text()).toMatch("Subtotal: \$9.99")
     })
 
-    it('should call action on button click', () => {
-      const { button, actions } = setup('9.99', product)
-      button.simulate('click')
+    it("should show taxes", () => {
+      const { taxes } = setup("9.99", product)
+      
+      expect(taxes.text()).toMatch("Taxes: \$0.87")
+    })
+
+    it("should show total", () => {
+      const { total } = setup("9.99", product)
+      
+      expect(total.text()).toMatch("Total: \$10.86")
+    })
+
+
+    it('should checkout on click', () => {
+      const { checkout, actions } = setup('9.99', product)
+      
+      checkout.simulate('click')
       expect(actions.onCheckoutClicked).toBeCalled()
     })
   })

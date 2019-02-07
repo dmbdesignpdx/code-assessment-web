@@ -1,7 +1,15 @@
-import { getTotal, getCartProducts } from './index'
+import {
+  getTotal,
+  getCartProducts,
+  modalState,
+  getCurrency
+} from './index'
+
 
 describe('selectors', () => {
+
   describe('getTotal', () => {
+
     it('should return price total', () => {
       const state = {
         cart: {
@@ -10,30 +18,32 @@ describe('selectors', () => {
             1: 4,
             2: 2,
             3: 1
-          }
+          },
         },
         products: {
           byId: {
             1: {
               id: 1,
-              price: 1.99
+              price: { value: 1.99 }
             },
             2: {
               id: 1,
-              price: 4.99
+              price: { value: 4.99 }
             },
             3: {
               id: 1,
-              price: 9.99
+              price: { value: 9.99 }
             }
           }
         }
       }
-      expect(getTotal(state)).toBe('27.93')
+      expect(getTotal(state)).toEqual("27.93")
     })
   })
 
+
   describe('getCartProducts', () => {
+
     it('should return products with quantity', () => {
       const state = {
         cart: {
@@ -42,7 +52,7 @@ describe('selectors', () => {
             1: 4,
             2: 2,
             3: 1
-          }
+          },
         },
         products: {
           byId: {
@@ -79,6 +89,34 @@ describe('selectors', () => {
           quantity: 1
         }
       ])
+    })
+  })
+
+
+  describe('modalState', () => {
+
+    it('should return the state of modal showing', () => {
+      const state = {
+        cart: {
+          showing: false,
+        }
+      }
+
+      expect(modalState(state)).toEqual(false)
+    })
+  })
+
+
+  describe('getCurrency', () => {
+
+    it('should return the type of currency', () => {
+      const state = {
+        products: {
+          currencyType: "USD"
+        }
+      }
+
+      expect(getCurrency(state)).toEqual("USD")
     })
   })
 })

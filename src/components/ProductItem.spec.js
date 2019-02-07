@@ -1,70 +1,71 @@
 import React from 'react'
 import { shallow } from 'enzyme'
+
 import Product from './Product'
 import ProductItem from './ProductItem'
 
-const setup = product => {
+
+const setup = (product, currency = "USD") => {
   const actions = {
     onAddToCartClicked: jest.fn()
   }
 
   const component = shallow(
-    <ProductItem product={product} {...actions} />
+    <ProductItem
+      product={product}
+      currency={currency}
+      {...actions}
+    />
   )
 
   return {
-    component: component,
-    actions: actions,
+    component,
+    actions,
+    currency,
     button: component.find('button'),
-    product: component.find(Product)
+    product: component.find(Product),
   }
 }
 
-let productProps
+const mockProduct = {
+  productTitle: "Product 1",
+  price: {
+    value: 9.99
+  },
+  inventory: 10,
+}
 
-describe('ProductItem component', () => {
-  beforeEach(() => {
-    productProps = {
-      title: 'Product 1',
-      price: 9.99,
-      inventory: 6
-    }
-  })
 
-  it('should render product', () => {
-    const { product } = setup(productProps)
-    expect(product.props()).toEqual({ title: 'Product 1', price: 9.99, inventory: 6 })
-  })
+describe("ProductItem Component", () => {
 
-  it('should render Add To Cart message', () => {
-    const { button } = setup(productProps)
-    expect(button.text()).toMatch(/^Add to cart/)
-  })
+  it("should have a button that adds to the cart", () => {
+    const { button, actions } = setup(mockProduct)
 
-  it('should not disable button', () => {
-    const { button } = setup(productProps)
-    expect(button.prop('disabled')).toEqual('')
-  })
-
-  it('should call action on button click', () => {
-    const { button, actions } = setup(productProps)
-    button.simulate('click')
+    button.simulate("click")
     expect(actions.onAddToCartClicked).toBeCalled()
   })
 
-  describe('when product inventory is 0', () => {
-    beforeEach(() => {
-      productProps.inventory = 0
-    })
+  it("should disable add button when no inventory", () => {
+    const { button } = setup({ ...mockProduct, inventory: 0 })
 
-    it('should render Sold Out message', () => {
-      const { button } = setup(productProps)
-      expect(button.text()).toMatch(/^Sold Out/)
-    })
+    expect(button.props().disabled).toMatch("")
+  })
 
-    it('should disable button', () => {
-      const { button } = setup(productProps)
-      expect(button.prop('disabled')).toEqual('disabled')
+
+  describe("with a product", () => {
+
+    it("should render that product", () => {
+      const { product, currency } = setup(mockProduct)
+      const props = {
+        title: mockProduct.productTitle,
+        price: mockProduct.price.value,
+        currency: currency,
+        inventory: mockProduct.inventory,
+        children: product.props().children,
+      }
+
+      expect(product.props()).toEqual(props)
     })
   })
 })
+

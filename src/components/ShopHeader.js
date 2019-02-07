@@ -41,3 +41,8 @@ const mapStateToProps = state => ({
 
 
 export default connect(mapStateToProps, { showCart })(ShopHeader)
+
+// For testing:
+export {
+  ShopHeader as ShopHeaderSpec
+}

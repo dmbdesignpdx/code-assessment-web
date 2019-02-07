@@ -27,7 +27,7 @@ const Cart = ({
 
       <svg className="empty"><use xlinkHref="#cart"/></svg>
 
-      <em>Please add some products<br/>to your cart.</em>
+      <em>Please add some products<br/> to your cart.</em>
 
     </div>
     
@@ -53,13 +53,13 @@ const Cart = ({
 
         <hr aria-hidden="true"/>
 
-        <p>Subtotal: <span>{toMoney(total, currency)}</span></p>
+        <p id="subtotal">Subtotal: <span>{toMoney(total, currency)}</span></p>
 
-        <p>Taxes: <span>{toMoney(taxes, currency)}</span></p>
+        <p id="taxes">Taxes: <span>{toMoney(taxes, currency)}</span></p>
 
         <hr aria-hidden="true"/>
         
-        <p>Total: <span>{toMoney(superTotal, currency)}</span></p>
+        <p id="total">Total: <span>{toMoney(superTotal, currency)}</span></p>
         
         <button
           className="btn checkout"

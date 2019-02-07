@@ -4,7 +4,8 @@ describe('reducers', () => {
   describe('cart', () => {
     const initialState = {
       addedIds: [],
-      quantityById: {}
+      quantityById: {},
+      showing: false,
     }
 
     it('should provide the initial state', () => {
@@ -22,7 +23,8 @@ describe('reducers', () => {
     it('should handle ADD_TO_CART action', () => {
       expect(cart(initialState, { type: 'ADD_TO_CART', productId: 1 })).toEqual({
         addedIds: [ 1 ],
-        quantityById: { 1: 1 }
+        quantityById: { 1: 1 },
+        showing: false,
       })
     })
 
@@ -30,12 +32,56 @@ describe('reducers', () => {
       it('should handle ADD_TO_CART action', () => {
         const state = {
           addedIds: [ 1, 2 ],
-          quantityById: { 1: 1, 2: 1 }
+          quantityById: { 1: 1, 2: 1 },
+          showing: false,
         }
 
         expect(cart(state, { type: 'ADD_TO_CART', productId: 2 })).toEqual({
           addedIds: [ 1, 2 ],
-          quantityById: { 1: 1, 2: 2 }
+          quantityById: { 1: 1, 2: 2 },
+          showing: false,
+        })
+      })
+
+      it("should handle REMOVE_FROM_CART action", () => {
+        const state = {
+          addedIds: [ 1, 2 ],
+          quantityById: { 1: 1, 2: 1 },
+          showing: true,
+        }
+
+        expect(cart(state, { type: "REMOVE_FROM_CART", productId: 2 })).toEqual({
+          addedIds: [ 1 ],
+          quantityById: { 1: 1, 2: 0 },
+          showing: true,
+        })
+      })
+
+      it("should handle INCREASE_QUANTITY action", () => {
+        const state = {
+          addedIds: [ 1, 2 ],
+          quantityById: { 1: 1, 2: 1 },
+          showing: true,
+        }
+        
+        expect(cart(state, { type: "INCREASE_QUANTITY", productId: 2 })).toEqual({
+          addedIds: [ 1, 2 ],
+          quantityById: { 1: 1, 2: 2 },
+          showing: true,         
+        })
+      })
+
+      it("should handle DECREASE_QUANTITY action", () => {
+        const state = {
+          addedIds: [ 1, 2 ],
+          quantityById: { 1: 1, 2: 2 },
+          showing: true,
+        }
+        
+        expect(cart(state, { type: "DECREASE_QUANTITY", productId: 2 })).toEqual({
+          addedIds: [ 1, 2 ],
+          quantityById: { 1: 1, 2: 1 },
+          showing: true,         
         })
       })
     })

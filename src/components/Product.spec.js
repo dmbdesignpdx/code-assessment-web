@@ -1,6 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
+
 import Product from './Product'
+
 
 const setup = props => {
   const component = shallow(
@@ -8,20 +10,56 @@ const setup = props => {
   )
 
   return {
-    component: component
+    component,
+    title: component.find("h3"),
+    price: component.find("h4"),
+    remaining: component.find(".sub"),
   }
 }
 
-describe('Product component', () => {
-  it('should render title and price', () => {
-    const { component } = setup({ title: 'Test Product', price: 9.99 })
-    expect(component.text()).toBe('Test Product - $9.99')
+const props = {
+  price: 9.99,
+  title: "Product 1",
+  currency: "USD",
+  children: <div id="child"></div>
+}
+
+
+describe("Product Component", () => {
+
+  it("should its children", () => {
+    expect(setup(props).component.contains(<div id="child"></div>)).toEqual(true)
   })
 
-  describe('when given inventory', () => {
-    it('should render title, price, and inventory', () => {
-      const { component } = setup({ title: 'Test Product', price: 9.99, inventory: 6 })
-      expect(component.text()).toBe('Test Product - $9.99 x 6')
+  it("should render a title", () => {
+    const { title } = setup(props)
+
+    expect(title.text()).toMatch("Product 1")
+  })
+
+  it("should render a price", () => {
+    const { price } = setup(props)
+
+    expect(price.text()).toMatch("9.99")
+  })
+
+
+  describe("when in the product list", () => {
+
+    it("should render the number remaining in inventory", () => {
+      const { remaining } = setup({ ...props, inventory: 10 })
+
+      expect(remaining.text()).toMatch("10 Remaining")
+    })
+  })
+
+
+  describe("when in the cart", () => {
+
+    it("should not render the number remaining in inventory", () => {
+      const { remaining } = setup(props)
+
+      expect(remaining.exists()).toEqual(false)
     })
   })
 })

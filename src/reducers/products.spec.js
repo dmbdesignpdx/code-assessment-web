@@ -1,6 +1,7 @@
 import reducer, * as products from './products'
 
 describe('reducers', () => {
+
   describe('products', () => {
     let state
 
@@ -55,6 +56,7 @@ describe('reducers', () => {
         ])
       })
 
+
       describe('when an item is added to the cart', () => {
 
         beforeEach(() => {
@@ -67,6 +69,75 @@ describe('reducers', () => {
               id: 1,
               title: 'Product 1',
               inventory: 1
+            }, {
+              id: 2,
+              title: 'Product 2',
+              inventory: 1
+            }
+          ])
+        })
+
+      })
+
+
+      describe('when an item quantity is increased', () => {
+
+        beforeEach(() => {
+          state = reducer(state, { type: 'INCREASE_QUANTITY', productId: 1 })
+        })
+
+        it('reduces the inventory', () => {
+          expect(products.getVisibleProducts(state)).toEqual([
+            {
+              id: 1,
+              title: 'Product 1',
+              inventory: 1
+            }, {
+              id: 2,
+              title: 'Product 2',
+              inventory: 1
+            }
+          ])
+        })
+
+      })
+
+
+      describe('when an item quantity is deccreased', () => {
+
+        beforeEach(() => {
+          state = reducer(state, { type: 'DECREASE_QUANTITY', productId: 1 })
+        })
+
+        it('increases the inventory', () => {
+          expect(products.getVisibleProducts(state)).toEqual([
+            {
+              id: 1,
+              title: 'Product 1',
+              inventory: 3
+            }, {
+              id: 2,
+              title: 'Product 2',
+              inventory: 1
+            }
+          ])
+        })
+
+      })
+
+
+      describe('when an item is removed', () => {
+
+        beforeEach(() => {
+          state = reducer(state, { type: 'REMOVE_FROM_CART', productId: 1, quantity: 1 })
+        })
+
+        it('increases the inventory', () => {
+          expect(products.getVisibleProducts(state)).toEqual([
+            {
+              id: 1,
+              title: 'Product 1',
+              inventory: 3
             }, {
               id: 2,
               title: 'Product 2',
