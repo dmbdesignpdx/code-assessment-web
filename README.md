@@ -39,7 +39,7 @@ Please also update this README file: we'd love to see notes on your decision-mak
 - [x] <s>Design - Layout</s>
 - [x] <s>Design - Cart</s>
 - [x] <s>Use product API</s>
-- [ ] Accessibility
+- [x] <s>Accessibility</s>
 
 ### Notes
 
@@ -88,3 +88,21 @@ API hooked up. :electric_plug: ...and no :fire:!
 Replaced the temperary scripts for toggling the `open` attribute of the `dialog` with some state action. Added `showing` to the `cart` object of the state, and added the appropriate action types to handle that state. Much action types!
 
 Just need to sift through and add some accessibility, do a little bit of cleaning, double-check the design, and this puppy should be good to go. :dog2:
+
+#### 2/6/19
+
+:coffee: Did some tidying up of files this morning.
+
+Introduced a new state of `currencyType`. Seemed appropriate. Also handled the logic of product sub totals, taxes, and the total total.
+
+Went through and added some accessibility as best I could. It may not be perfect, but I'm constantly learning how to improve accessibility, and so I add what I know because it's absolutely better than not adding anything at all. (Also, I'm relying on my copywriting skills :sweat_smile:)
+
+Did a last sweep through the code and design check. Should be :ok_hand:.
+
+Updated all test spec files.
+
+I think this little app is at a good place! :tada: :sparkles: :unicorn: I actually had a good time doing this. I'll admit I've not had a lot of opportunity to work with other developer's code, so it felt like I started off a little slower than I'd like. However, I feel that I was able to become familiar with the code rather quickly and it started feel like my own. 
+
+I really hope to discuss in person, with whoever is reading this, what I could have improved on, any ideas/conversations my code may have sparked, and/or just coding in general. Thank you for time and I hope to hear from you soon.
+
+-Daniel
